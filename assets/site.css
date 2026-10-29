@@ -1,0 +1,236 @@
+/* Vaishanavi Saware — portfolio
+   One grid, two anchor lines (column 1 and column 7), tight margins, few type sizes.
+   Built to references/layout.md and references/type.md of the design-taste-frontend skill. */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; scrollbar-gutter: stable both-edges; }
+img, video, svg { display: block; max-width: 100%; }
+button, input, select { font: inherit; color: inherit; }
+
+:root {
+  --paper: #eeeeea;
+  --cover: #c4d8e9;
+  --ink: #152339;
+  --muted: #4b5462;
+
+  /* layout.md §2 — tight margins so content reaches the edges */
+  --margin: clamp(1rem, 2.2vw, 2rem);        /* 16–32px */
+  --gutter: clamp(0.75rem, 1.4vw, 1.5rem);   /* 12–24px */
+  --sect: clamp(4.5rem, 8.2vw, 11rem);       /* 72px phone → 118px desktop */
+
+  /* type.md §2 — few sizes, far apart */
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body:  clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead:  clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head:  clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --step-disp:  clamp(3rem, 1rem + 9.5vw, 10.5rem);
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: var(--step-body); line-height: 1.5;
+  font-kerning: normal; text-rendering: optimizeLegibility;
+  max-width: 1920px; margin-inline: auto;
+}
+
+/* weight descends with size: only the name is at full weight (type.md §8) */
+h1, h2, h3 { text-wrap: balance; hyphens: none; }
+h1 { font-size: var(--step-disp); font-weight: 800; line-height: 0.9; letter-spacing: -0.04em; margin-left: -0.05em; }
+h2 { font-size: var(--step-head); font-weight: 700; line-height: 0.98; letter-spacing: -0.03em; }
+h3 { font-size: var(--step-lead); font-weight: 600; line-height: 1.2; letter-spacing: -0.015em; }
+p { max-width: 62ch; text-wrap: pretty; }
+p + p { margin-top: 0.9em; }
+a { color: inherit; }
+strong, b { font-weight: 600; }
+
+::selection { background: var(--cover); color: var(--ink); }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+a { text-underline-offset: 0.18em; text-decoration-thickness: 0.07em; }
+
+/* ---------- the one grid ---------- */
+.wrap { padding-inline: var(--margin); }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+.muted { color: var(--muted); }
+.small { font-size: var(--step-small); line-height: 1.45; }
+.lead { font-size: var(--step-lead); line-height: 1.35; max-width: 40ch; }
+
+/* anchor A = column 1, anchor B = column 7 */
+.a-full { grid-column: 1 / -1; }
+.a-left { grid-column: 1 / span 6; }
+.a-right { grid-column: 7 / span 6; }
+.a-rightend { grid-column: 9 / span 4; }
+
+/* ---------- metadata ---------- */
+.meta b { display: block; font-size: var(--step-small); font-weight: 700; letter-spacing: .02em; margin-bottom: .4rem; }
+.meta span, .meta a { display: block; font-size: var(--step-small); color: var(--muted); line-height: 1.6;
+  text-decoration: none; overflow-wrap: anywhere; }
+.meta a:hover { color: var(--ink); text-decoration: underline; }
+.meta-block + .meta-block { margin-top: clamp(1.1rem, 2vw, 1.6rem); }
+.meta-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gutter); row-gap: clamp(1.1rem, 2vw, 1.6rem); }
+.meta-row .meta-block + .meta-block { margin-top: 0; }
+
+/* ---------- navigation (layout.md §7: small furniture, no bar) ---------- */
+.nav ul { display: flex; gap: clamp(1rem, 2vw, 2rem); list-style: none; padding: 0; justify-content: flex-end; }
+.nav a { text-decoration: none; font-size: var(--step-body); }
+.nav a:hover, .nav a[aria-current="page"] { text-decoration: underline; }
+.mark { font-size: var(--step-body); font-weight: 700; letter-spacing: -0.02em; text-decoration: none; }
+.mark-short { display: none; }
+
+/* ---------- the cover: one fact in each corner, like a mount round a print ---------- */
+.cover { background: var(--cover); min-height: 100svh;
+  padding-block: clamp(1.25rem, 2.6vw, 2rem) clamp(2rem, 4vw, 3.25rem);
+  display: grid; align-content: space-between; row-gap: clamp(3rem, 8vw, 7rem); }
+.cover .corner-top { align-items: baseline; }
+.cover .corner-bottom { align-items: end; row-gap: clamp(2rem, 4vw, 3rem); }
+.cover h1 { max-width: 11ch; }
+.cover .lead { margin-top: clamp(1.1rem, 2.2vw, 1.75rem); }
+.cover .btn { margin-top: clamp(1.4rem, 2.6vw, 2rem); }
+.cover .meta b { color: var(--ink); }
+.cover .meta span, .cover .meta a { color: var(--ink); }
+
+.btn { display: inline-block; background: var(--ink); color: var(--paper); font-weight: 600;
+  padding: .8em 1.6em; text-decoration: none; font-size: var(--step-body); border: 0;
+  transition: background-color .2s var(--ease), transform .18s var(--ease); }
+.btn:hover { background: #253752; }
+.btn:active { transform: translateY(2px); }
+
+/* ---------- the work index (an archive module: repetition is allowed here) ---------- */
+.work-row { padding-block: clamp(1.1rem, 2.2vw, 1.8rem); }
+.work-row a { text-decoration: none; display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); align-items: baseline; }
+.work-row h3 { grid-column: 1 / span 5; font-size: var(--step-head); font-weight: 600;
+  line-height: 0.98; letter-spacing: -0.03em; }
+.work-row .where { grid-column: 1 / span 5; font-size: var(--step-small); color: var(--muted); margin-top: .5rem; }
+.work-row .row-meta { grid-column: 7 / span 6; display: grid; gap: .35rem; align-self: end; padding-bottom: .4em; }
+.work-row .disc { font-size: var(--step-body); max-width: 46ch; }
+.work-row .go { font-size: var(--step-small); color: var(--muted); font-variant-numeric: tabular-nums; order: 2; }
+.work-row a:hover h3 { text-decoration: underline; }
+
+/* ---------- a work page head ---------- */
+.sheet-head { padding-block: clamp(1.25rem, 2.6vw, 2rem) clamp(2.5rem, 5vw, 4.5rem); }
+.sheet-head h1 { max-width: 11ch; }
+.sheet-head .disc { font-size: var(--step-lead); margin-top: clamp(.7rem, 1.4vw, 1.1rem); max-width: 34ch; }
+.sheet-head .btn { margin-top: clamp(1.4rem, 2.6vw, 2rem); }
+
+/* ---------- prose and side column ---------- */
+.prose p { font-size: var(--step-body); max-width: 60ch; }
+.side h3 { margin-bottom: clamp(.7rem, 1.4vw, 1rem); }
+.side ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .4rem; }
+.side li { font-size: var(--step-body); }
+
+/* ---------- lists ---------- */
+.stack > * + * { margin-top: clamp(1.4rem, 2.4vw, 2rem); }
+.stack-row .when { grid-column: 1 / span 2; font-size: var(--step-small); color: var(--muted); font-variant-numeric: tabular-nums; }
+.stack-row .body { grid-column: 3 / span 6; }
+.stack-row .org { display: block; font-size: var(--step-lead); font-weight: 600; line-height: 1.2; letter-spacing: -0.015em; }
+.stack-row .role { display: block; font-size: var(--step-body); margin-top: .15rem; }
+.stack-row .where { grid-column: 9 / span 4; font-size: var(--step-small); color: var(--muted); text-align: right; }
+
+.groups > div:nth-child(1) { grid-column: 1 / span 4; }
+.groups > div:nth-child(2) { grid-column: 5 / span 4; }
+.groups > div:nth-child(3) { grid-column: 9 / span 4; }
+.groups h3 { margin-bottom: clamp(.7rem, 1.4vw, 1rem); }
+.groups ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .4rem; }
+.groups li { font-size: var(--step-body); }
+
+/* ---------- endings (layout.md §8: the name at full width, one quiet line) ---------- */
+.foot { padding-block: clamp(3rem, 6vw, 7rem) clamp(1.75rem, 3vw, 2.5rem); }
+.foot .name { font-size: var(--step-disp); font-weight: 800; letter-spacing: -0.045em; line-height: .88;
+  margin-left: -0.05em; max-width: 11ch; }
+.foot .foot-line { margin-top: clamp(2.5rem, 5vw, 4rem); align-items: baseline; }
+.foot .foot-line a { font-size: var(--step-body); text-decoration: none; }
+.foot .foot-line a:hover { text-decoration: underline; }
+.foot .foot-line .right { justify-self: end; text-align: right; }
+
+.next { padding-block: clamp(3rem, 6vw, 6rem) 0; align-items: baseline; }
+.next a { text-decoration: none; }
+.next .go-next { font-size: var(--step-lead); font-weight: 600; letter-spacing: -0.015em; }
+.next .back { justify-self: end; font-size: var(--step-body); color: var(--muted); }
+.next a:hover { text-decoration: underline; }
+
+/* ---------- motion ---------- */
+.rise { opacity: 0; transform: translateY(16px); transition: opacity .55s var(--ease), transform .55s var(--ease); }
+.rise.in { opacity: 1; transform: none; }
+.no-js .rise { opacity: 1; transform: none; }
+
+/* ---------- the phone is a second composition (layout.md §9) ---------- */
+@media (max-width: 900px) {
+  .a-left, .a-right, .a-rightend { grid-column: 1 / -1; }
+  .a-right, .a-rightend { margin-top: clamp(1.75rem, 4vw, 2.5rem); }
+  .work-row a { grid-template-columns: 1fr; row-gap: .5rem; }
+  .work-row h3, .work-row .row-meta, .work-row .where { grid-column: 1 / -1; }
+  .work-row .row-meta { align-self: auto; padding-bottom: 0; }
+  .work-row .go { order: 0; }
+  .stack-row .when, .stack-row .body, .stack-row .where { grid-column: 1 / -1; }
+  .stack-row .where { margin-top: .15rem; text-align: left; }
+  .stack-row .body { margin-top: .15rem; }
+  .cover h1, .sheet-head h1 { max-width: none; }
+
+  .foot .name { max-width: none; }
+  .foot .foot-line .right, .next .back { justify-self: start; text-align: left; margin-top: .75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .rise { opacity: 1; transform: none; }
+}
+
+@media (max-width: 700px) {
+  .groups > div:nth-child(1), .groups > div:nth-child(2), .groups > div:nth-child(3) { grid-column: 1 / -1; }
+  .groups > div + div { margin-top: clamp(1.75rem, 4vw, 2.5rem); }
+}
+
+/* the one deliberate exception: the work index heading is a monument */
+.h-monument { font-size: var(--step-disp); font-weight: 800; line-height: 0.9;
+  letter-spacing: -0.04em; margin-left: -0.05em; }
+
+/* contact: the heading on anchor A, the facts on their own columns from anchor B */
+#contact .mb-1 { grid-column: 6 / span 3; }
+#contact .mb-2 { grid-column: 9 / span 2; }
+#contact .mb-3 { grid-column: 11 / span 2; }
+
+/* ---------- metadata groups: horizontal while there is room, on the same columns ---------- */
+@media (max-width: 900px) {
+  /* the three facts drop under the heading but stay in a row, four columns each */
+  #contact .mb-1 { grid-column: 1 / span 4; }
+  #contact .mb-2 { grid-column: 5 / span 4; }
+  #contact .mb-3 { grid-column: 9 / span 4; }
+  #contact .meta-block { margin-top: clamp(1.75rem, 4vw, 2.5rem); }
+
+  .meta.a-rightend { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .meta.a-rightend .meta-block { margin-top: 0; }
+  .meta.a-rightend .meta-block:nth-child(1) { grid-column: 1 / span 4; }
+  .meta.a-rightend .meta-block:nth-child(2) { grid-column: 5 / span 4; }
+  .meta.a-rightend .meta-block:nth-child(3) { grid-column: 9 / span 4; }
+}
+
+@media (max-width: 700px) {
+  .meta-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* only a real phone stacks them */
+@media (max-width: 560px) {
+  #contact .mb-1, #contact .mb-2, #contact .mb-3 { grid-column: 1 / -1; }
+  #contact .meta-block + .meta-block { margin-top: clamp(1.1rem, 2vw, 1.6rem); }
+  .meta.a-rightend { display: block; }
+  .meta.a-rightend .meta-block + .meta-block { margin-top: clamp(1.1rem, 2vw, 1.6rem); }
+}
+
+@media (max-width: 420px) {
+  .meta-row { grid-template-columns: 1fr; }
+}
+
+/* the navigation is one row on a phone, not a stack (layout.md §9) */
+@media (max-width: 560px) {
+  .mark-full { display: none; }
+  .mark-short { display: inline; }
+  .corner-top { align-items: baseline; }
+  .corner-top .mark { grid-column: 1 / span 4 !important; }
+  .nav.a-rightend { grid-column: 5 / span 8 !important; margin-top: 0 !important; }
+  .nav ul { gap: clamp(.75rem, 3.5vw, 1.25rem); }
+  .nav a, .mark { font-size: var(--step-small); }
+}
