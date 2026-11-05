@@ -131,12 +131,14 @@ main {
 .ext { display: inline-flex; align-items: center; gap: 8px; }
 .ext svg { flex: none; }
 
+/* The export from Figma already carries the 48px corners and the hairline border,
+   baked in. Rounding it again in CSS draws a second, smaller curve that shows the
+   page through the gap as soon as the image is scaled — so the PNG's own shape is
+   the only one, and it scales with the image. */
 .portrait {
   width: 280px;
   height: 350px;
   object-fit: cover;
-  border-radius: 48px;
-  border: 1px solid var(--border);
 }
 
 .intro { display: flex; flex-direction: column; gap: 6px; }
@@ -353,7 +355,7 @@ main {
 @media (max-width: 620px) {
   main { padding: 96px 20px 80px; gap: 72px; }
   .name { font-size: 26px; }
-  .portrait { width: 100%; height: auto; aspect-ratio: 4 / 5; border-radius: 32px; }
+  .portrait { width: 100%; height: auto; aspect-ratio: 4 / 5; }
   .stats { grid-template-columns: 1fr; gap: 12px; }
   .skills { grid-template-columns: 1fr; row-gap: 28px; }
   .project { flex-direction: column; }
@@ -363,6 +365,122 @@ main {
   .badges .pill { display: none; }
 }
 
+/* ── Read-more panel ────────────────────────────────────── */
+
+.panel {
+  width: min(860px, calc(100vw - 48px));
+  max-height: min(86vh, 920px);
+  margin: auto;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: var(--surface);
+  color: var(--text);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.panel::backdrop {
+  background: rgba(8, 8, 9, 0.72);
+  backdrop-filter: blur(6px);
+}
+:root[data-theme="light"] .panel::backdrop { background: rgba(26, 26, 26, 0.42); }
+
+.panel-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 64px;
+}
+
+.panel-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .18s ease, transform .18s ease;
+}
+.panel-close:hover { border-color: var(--muted); transform: rotate(90deg); }
+
+.panel-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  padding-right: 64px;
+}
+
+.panel-prose { display: flex; flex-direction: column; gap: 20px; }
+.panel-prose p {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  color: var(--body);
+}
+.panel-prose em { font-style: italic; color: var(--text); }
+.panel-prose a { color: var(--text); text-decoration: underline; text-underline-offset: 2px; }
+
+.panel-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin: 0;
+  padding-top: 8px;
+}
+.panel-meta div { display: flex; flex-direction: column; gap: 4px; }
+.panel-meta dt { font-size: 14px; letter-spacing: -0.01em; color: var(--text); }
+.panel-meta dd { margin: 0; font-size: 14px; letter-spacing: -0.01em; color: var(--muted); }
+
+body.panel-open { overflow: hidden; }
+
+/* ── Motion ─────────────────────────────────────────────── */
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(20px) scale(.985); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes panel-out {
+  to { opacity: 0; transform: translateY(8px) scale(.992); }
+}
+@keyframes veil-in  { from { opacity: 0; } to { opacity: 1; } }
+
+.panel[open]            { animation: panel-in 480ms cubic-bezier(.16, 1, .3, 1) both; }
+.panel[open]::backdrop  { animation: veil-in 380ms ease both; }
+.panel.closing          { animation: panel-out 200ms ease-in both; }
+.panel.closing::backdrop{ animation: veil-in 200ms ease reverse both; }
+
+/* Sections ease in as they arrive. The rail fades only — a transform on a
+   sticky element's box is best left alone. */
+.js .content { opacity: 0; transform: translateY(16px); }
+.js .rail    { opacity: 0; }
+.js .content.in,
+.js .rail.in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 820ms cubic-bezier(.16, 1, .3, 1),
+              transform 820ms cubic-bezier(.16, 1, .3, 1);
+}
+.js .content.in { transition-delay: 70ms; }
+
+@media (max-width: 620px) {
+  .panel { width: calc(100vw - 32px); max-height: 88vh; border-radius: 22px; }
+  .panel-inner { padding: 56px 24px 32px; gap: 28px; }
+  .panel-close { top: 16px; right: 16px; width: 40px; height: 40px; }
+  .panel-title { font-size: 21px; padding-right: 48px; }
+  .panel-meta { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .js .content, .js .rail { opacity: 1; transform: none; }
 }

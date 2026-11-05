@@ -69,6 +69,28 @@ Colours are CSS custom properties on `:root` in `assets/site.css`:
 | `--card` | `#ffffff` | the three stat tiles |
 | `--green` | `#49c98a` | the availability dot |
 
+## Behaviour
+
+**Read more opens a panel over the page,** not a new page. Each project has a
+`<dialog class="panel">` at the bottom of `index.html`, and the card's button carries
+`data-dialog="<its id>"`. Native `<dialog>` does the heavy lifting: the backdrop, the
+focus trap, and inertness for the page behind. On top of that, `assets/site.js` closes
+it on the backdrop, on the ×, and on Esc, locks the page from scrolling while it is
+open, and hands focus back to the button that opened it.
+
+To put more in a panel, add it inside `.panel-prose` — the panel scrolls on its own at
+`86vh`. The four-column `.panel-meta` list at the foot takes any term and definition.
+
+**Motion is deliberately quiet.** The panel rises 20px and settles over 480ms on
+`cubic-bezier(.16, 1, .3, 1)`; the backdrop fades over 380ms. Each section eases in as
+it arrives, 16px and 820ms, through an `IntersectionObserver`. The rail fades without
+moving, because a transform on a sticky element is asking for trouble. All of it is off
+under `prefers-reduced-motion`.
+
+The scroll itself is untouched. Smooth-scroll libraries that take over the wheel fight
+the trackpad and read as sluggish rather than expensive, so the feeling of weight comes
+from the reveals instead.
+
 ## Three things worth knowing
 
 1. **The theme toggle.** The design shows a moon button top right but only a dark
@@ -77,10 +99,10 @@ Colours are CSS custom properties on `:root` in `assets/site.css`:
    those values are inverted into `:root[data-theme="light"]`. Delete that block and
    `assets/site.js` to drop the feature.
 2. **`assets/resume.pdf` is a stand-in.** It is her LinkedIn PDF export. Replace it
-   with her own resume.
-3. **The three "Read more" links** point at her LinkedIn, except the clinic card, which
-   points at `sukhayurveda.in` — the URL her LinkedIn gives. They want real
-   destinations: a case-study page, or the publication.
+   with her own resume. All three Resume links open in a new tab.
+3. **The panels are the thin part.** They say what LinkedIn says and no more. What they
+   want is what she shipped, the numbers, and the decisions she took — one real figure
+   in the Promega panel would do more than the rest of the page.
 
 ## Editing
 
