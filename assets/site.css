@@ -236,7 +236,24 @@ main {
   letter-spacing: -0.01em;
   color: var(--body);
 }
-.read-more { text-decoration: none; }
+/* It opens a panel, so it has to be a button — but it reads as the plain text
+   link the design draws. Without this it falls back to the browser's own button
+   chrome: grey fill, outset border, Arial. Size and spacing come from the
+   shared label rule above. */
+.read-more {
+  appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  color: var(--text);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
 .read-more:hover { color: var(--muted); }
 
 /* ── Experience and education ───────────────────────────── */
@@ -336,6 +353,7 @@ main {
      so it carries the pill's own background to stay legible. */
   background: var(--surface);
   color: var(--text);
+  font-family: inherit;
   cursor: pointer;
 }
 .toggle:hover { border-color: var(--muted); }
@@ -407,6 +425,7 @@ main {
   border-radius: 999px;
   background: var(--bg);
   color: var(--text);
+  font-family: inherit;
   cursor: pointer;
   transition: border-color .18s ease, transform .18s ease;
 }
