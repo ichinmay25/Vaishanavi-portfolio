@@ -1,34 +1,17 @@
-document.documentElement.classList.remove('no-js');
-
-var calm = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-/* Entrances: heading, then text, staggered. Nothing stays hidden if this fails. */
+/* One job: the colour-theme toggle in the top right.
+   The page is dark by default, as the design is. */
 (function () {
-  var parts = document.querySelectorAll('.rise');
-  if (!parts.length) return;
+  var root = document.documentElement;
+  var button = document.getElementById('theme-toggle');
+  if (!button) return;
 
-  function revealAll() { parts.forEach(function (p) { p.classList.add('in'); }); }
-  if (calm.matches || !('IntersectionObserver' in window) || !window.innerHeight) { revealAll(); return; }
+  var stored;
+  try { stored = localStorage.getItem('theme'); } catch (e) { stored = null; }
+  if (stored === 'light' || stored === 'dark') root.setAttribute('data-theme', stored);
 
-  var seen = new WeakMap();
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting || seen.get(e.target)) return;
-      seen.set(e.target, 1);
-      var group = e.target.closest('section, header, footer') || document.body;
-      var kin = Array.prototype.slice.call(group.querySelectorAll('.rise'));
-      var i = Math.max(0, kin.indexOf(e.target));
-      setTimeout(function () { e.target.classList.add('in'); }, Math.min(i, 6) * 70);
-      io.unobserve(e.target);
-    });
-  }, { rootMargin: '0px 0px -4% 0px', threshold: 0.08 });
-  parts.forEach(function (p) { io.observe(p); });
-
-  setTimeout(function () {
-    var working = document.querySelectorAll('.rise.in').length;
-    parts.forEach(function (p) {
-      if (p.classList.contains('in')) return;
-      if (!working || p.getBoundingClientRect().top < window.innerHeight) p.classList.add('in');
-    });
-  }, 2000);
+  button.addEventListener('click', function () {
+    var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
 })();

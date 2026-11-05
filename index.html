@@ -1,130 +1,260 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vaishanavi Saware, biotechnologist</title>
-<meta name="description" content="Vaishanavi Saware, biotechnologist. Clinical operations at Genentech, after flow cytometry research at Gladstone Institutes and product management at Promega.">
+<title>Vaishanavi Saware — biotechnologist</title>
+<meta name="description" content="Vaishanavi Saware — Clinical Operations at Genentech, with research at Gladstone Institutes and product management at Promega.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
 
-<header class="cover wrap">
-  <div class="grid corner-top">
-    <a class="mark" href="index.html" style="grid-column:1 / span 5"><span class="mark-full">Vaishanavi Saware™</span><span class="mark-short">V. Saware</span></a>
-    <nav class="nav a-rightend" aria-label="Main">
-      <ul>
-        <li><a href="#work">Work</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-
-  <div class="grid corner-bottom">
-    <div style="grid-column:1 / span 7">
-      <h1 class="rise">Vaishanavi Saware.</h1>
-      <p class="lead rise">Clinical operations at Genentech. Product at Promega before that, and four years at the bench before that.</p>
-      <p class="rise"><a class="btn" href="#work">See the work</a></p>
-    </div>
-    <div class="meta a-rightend rise">
-      <div class="meta-block"><b>Info</b><span>Clinical operations</span><span>Genentech</span><span>San Francisco, California</span></div>
-      <div class="meta-block"><b>Contact</b><a href="mailto:vaishanavi04.saware@gmail.com">vaishanavi04.saware@gmail.com</a></div>
-      <div class="meta-block"><b>Social</b><a href="https://www.linkedin.com/in/vaishanavi-saware">LinkedIn</a></div>
-    </div>
-  </div>
-</header>
+<div class="badges">
+  <span class="pill"><span class="dot" aria-hidden="true"></span>Available for work</span>
+  <button class="toggle" type="button" id="theme-toggle" aria-label="Switch colour theme">
+    <svg class="icon-moon" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M13.99 8.324a6 6 0 1 1-6.315-6.315c.27-.15.411.171.268.4a4 4 0 0 0 5.647 5.547c.229-.143.55-.002.535.268Z" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <svg class="icon-sun" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="8" cy="8" r="3.2" stroke="currentColor" stroke-width="1.333"/>
+      <path d="M8 1.2v1.6M8 13.2v1.6M1.2 8h1.6M13.2 8h1.6M3.2 3.2l1.13 1.13M11.67 11.67l1.13 1.13M12.8 3.2l-1.13 1.13M4.33 11.67 3.2 12.8" stroke="currentColor" stroke-width="1.333" stroke-linecap="round"/>
+    </svg>
+  </button>
+</div>
 
 <main>
 
-  <section class="wrap" id="work" aria-labelledby="work-h" style="padding-block:var(--sect) 0">
-    <div class="grid"><h2 class="a-full h-monument rise" id="work-h">Work.</h2></div>
-    <div class="works" style="margin-top:clamp(1.5rem,3vw,2.5rem)">
-      <div class="work-row rise">
-        <a href="operations.html">
-          <h3>Operations</h3>
-          <span class="where">Genentech, San Francisco · Sukhayu Ayurveda Clinic, India</span>
-          <span class="row-meta"><span class="go">2024 – now</span><span class="disc">Clinical operations inside global drug development, and project management for a specialty clinic.</span></span>
-        </a>
+  <!-- ── Hero ───────────────────────────────────────────────── -->
+  <section class="row hero">
+    <div class="rail">
+      <h1 class="name">Vaishanavi Saware</h1>
+      <ul class="details">
+        <li>San Francisco, CA, USA</li>
+        <li><a href="mailto:vaishanavi04.saware@gmail.com">vaishanavi04.saware@gmail.com</a></li>
+        <li><a class="ext" href="assets/resume.pdf">Resume<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M12.25 5.25V1.75H8.75M12.25 1.75L5.833 8.167M10.5 7.583v3.5a1.167 1.167 0 0 1-1.167 1.167H2.917A1.167 1.167 0 0 1 1.75 11.083V4.667A1.167 1.167 0 0 1 2.917 3.5h3.5" stroke="currentColor" stroke-width="1.167" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <img class="portrait" src="assets/portrait.png" width="280" height="350" alt="Vaishanavi Saware">
+      <div class="intro">
+        <p class="lead">I’m Vaishanavi Saware: a biotechnologist</p>
+        <p class="sub">Clinical Operations at Genentech, with research at Gladstone Institutes and product management at Promega.</p>
       </div>
-      <div class="work-row rise">
-        <a href="product.html">
+      <div class="buttons">
+        <a class="btn btn-primary" href="mailto:vaishanavi04.saware@gmail.com">Get in touch</a>
+        <a class="btn btn-ghost" href="assets/resume.pdf">Download resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── About ──────────────────────────────────────────────── -->
+  <section class="row">
+    <div class="rail"><h2 class="label">About</h2></div>
+    <div class="content">
+      <div class="prose">
+        <p>Carnegie Mellon biotechnology graduate with 3+ years of industry and academia experience in scientific research, clinical operations and product marketing management, at Gladstone Institutes–UCSF, Genentech and Promega Corporation.</p>
+        <p>Passionate about solving healthcare challenges to create a lasting impact on patients. I specialise in leading and driving healthcare innovation and drug development research by communicating data-driven scientific solutions to cross-functional teams, to achieve key project portfolio and study team goals.</p>
+      </div>
+      <ul class="stats">
+        <li><strong>3+ years</strong><span>across industry and academia</span></li>
+        <li><strong>5</strong><span>research posts, one instrument core</span></li>
+        <li><strong>1 publication</strong><span>in flow cytometry</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Projects ───────────────────────────────────────────── -->
+  <section class="row">
+    <div class="rail"><h2 class="label">Projects</h2></div>
+    <div class="content stack-32">
+
+      <article class="project">
+        <img src="assets/project-promega.png" width="170" height="170" alt="" aria-hidden="true">
+        <div class="project-body">
+          <div class="project-text">
+            <div class="heading">
+              <h3>Genomics sales readiness and reach</h3>
+              <p class="org">Promega Corporation, Madison</p>
+            </div>
+            <p>Accelerated sales readiness, amplified genomics brand reach, and enabled scalable UX and executive decision making through first of its kind content, influencer strategy and analytics.</p>
+          </div>
+          <a class="ext read-more" href="https://www.linkedin.com/in/vaishanavi-saware/">Read more<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M12.25 5.25V1.75H8.75M12.25 1.75L5.833 8.167M10.5 7.583v3.5a1.167 1.167 0 0 1-1.167 1.167H2.917A1.167 1.167 0 0 1 1.75 11.083V4.667A1.167 1.167 0 0 1 2.917 3.5h3.5" stroke="currentColor" stroke-width="1.167" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <article class="project">
+        <img src="assets/project-clinic.png" width="170" height="170" alt="" aria-hidden="true">
+        <div class="project-body">
+          <div class="project-text">
+            <div class="heading">
+              <h3>Clinic reporting and replenishment</h3>
+              <p class="org">Sukhayu Ayurveda Clinic, India</p>
+            </div>
+            <p>Reduced reporting time, improved replenishment cycles, and turned patient insights into product and communication changes through data analysis and cross-functional teams.</p>
+          </div>
+          <a class="ext read-more" href="https://www.sukhayurveda.in">Read more<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M12.25 5.25V1.75H8.75M12.25 1.75L5.833 8.167M10.5 7.583v3.5a1.167 1.167 0 0 1-1.167 1.167H2.917A1.167 1.167 0 0 1 1.75 11.083V4.667A1.167 1.167 0 0 1 2.917 3.5h3.5" stroke="currentColor" stroke-width="1.167" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+      <article class="project">
+        <img src="assets/project-gladstone.png" width="170" height="170" alt="" aria-hidden="true">
+        <div class="project-body">
+          <div class="project-text">
+            <div class="heading">
+              <h3>Stem cell markers by flow cytometry</h3>
+              <p class="org">Gladstone Institutes, Flow Cytometry Core</p>
+            </div>
+            <p>Optimized, efficient measurement of the expression of undifferentiated stem cell markers in human induced pluripotent stem cells (iPSCs) by flow cytometry. Published.</p>
+          </div>
+          <a class="ext read-more" href="https://www.linkedin.com/in/vaishanavi-saware/">Read more<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M12.25 5.25V1.75H8.75M12.25 1.75L5.833 8.167M10.5 7.583v3.5a1.167 1.167 0 0 1-1.167 1.167H2.917A1.167 1.167 0 0 1 1.75 11.083V4.667A1.167 1.167 0 0 1 2.917 3.5h3.5" stroke="currentColor" stroke-width="1.167" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── Experience ─────────────────────────────────────────── -->
+  <section class="row">
+    <div class="rail"><h2 class="label">Experience</h2></div>
+    <div class="content stack-32">
+
+      <article class="entry">
+        <img src="assets/logo-genentech.png" width="64" height="64" alt="Genentech">
+        <div class="entry-body">
+          <div class="heading">
+            <h3>Product Development Global Operations</h3>
+            <p class="org">Genentech, San Francisco Bay Area</p>
+            <p class="org">May 2026 - Present</p>
+          </div>
+          <ul class="bullets">
+            <li>Clinical operations inside global drug development.</li>
+            <li>Communicating data-driven scientific solutions to cross-functional teams, toward key project portfolio and study team goals.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <img src="assets/logo-promega.png" width="64" height="64" alt="Promega Corporation">
+        <div class="entry-body">
+          <div class="heading">
+            <h3>Product Manager</h3>
+            <p class="org">Promega Corporation, Madison, Wisconsin</p>
+            <p class="org">May 2025 - August 2025</p>
+          </div>
+          <ul class="bullets">
+            <li>Genomics and Instruments team.</li>
+            <li>Accelerated sales readiness, amplified genomics brand reach, and enabled scalable UX and executive decision making through first of its kind content, influencer strategy and analytics.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <img src="assets/logo-gladstone.png" width="64" height="64" alt="Gladstone Institutes">
+        <div class="entry-body">
+          <div class="heading">
+            <h3>Research Associate I–II</h3>
+            <p class="org">Gladstone Institutes, San Francisco Bay Area</p>
+            <p class="org">August 2022 - May 2024</p>
+          </div>
+          <ul class="bullets">
+            <li>Flow Cytometry Core, 1 year 10 months across Research Associate I and II.</li>
+            <li>Published on the optimized measurement of undifferentiated stem cell markers in human iPSCs by flow cytometry.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── Education ──────────────────────────────────────────── -->
+  <section class="row">
+    <div class="rail"><h2 class="label">Education</h2></div>
+    <div class="content stack-32">
+
+      <article class="entry">
+        <img src="assets/logo-cmu.png" width="64" height="64" alt="Carnegie Mellon University">
+        <div class="entry-body">
+          <div class="heading">
+            <h3>M.S., Biotechnology and Pharmaceutical Engineering</h3>
+            <p class="org">Carnegie Mellon University, Pittsburgh</p>
+            <p class="org">August 2024 - December 2025</p>
+          </div>
+          <ul class="bullets">
+            <li>Graduate Research Associate, Cai Lab, Mellon College of Science — January to May 2025.</li>
+            <li>Graduate Research Associate, Robinson Lab, College of Engineering — August to December 2025.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <img src="assets/logo-ucdavis.png" width="64" height="64" alt="University of California, Davis">
+        <div class="entry-body">
+          <div class="heading">
+            <h3>B.S., Neurobiology, Physiology and Behavioral Sciences</h3>
+            <p class="org">University of California, Davis</p>
+            <p class="org">September 2018 - June 2022</p>
+          </div>
+          <ul class="bullets">
+            <li>Pre-medicine and pre-medical studies.</li>
+            <li>Undergraduate Researcher in the Ho Lab, School of Medicine, and Veterinary Technician at the UC Davis Veterinary Medical Teaching Hospital.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── Skills ─────────────────────────────────────────────── -->
+  <section class="row">
+    <div class="rail"><h2 class="label">Skills</h2></div>
+    <div class="content">
+      <div class="skills">
+        <div class="skill">
+          <h3>Molecular techniques</h3>
+          <p>PCR, ELISA, Flow cytometry, Molecular cloning<br>HTS assay development, RNA purification, Cell culture, Western blotting</p>
+        </div>
+        <div class="skill">
+          <h3>Technical</h3>
+          <p>Python, R, Benchling, JIRA<br>Figma, Adobe, Asana, Veeva Clinical Vault</p>
+        </div>
+        <div class="skill">
           <h3>Product</h3>
-          <span class="where">Promega Corporation, Madison · Genomics and Instruments team</span>
-          <span class="row-meta"><span class="go">2025</span><span class="disc">Product management for genomics instruments: sales readiness, brand reach, and the analytics behind both.</span></span>
-        </a>
-      </div>
-      <div class="work-row rise">
-        <a href="research.html">
-          <h3>Research</h3>
-          <span class="where">Gladstone Institutes · Carnegie Mellon University · UC Davis School of Medicine</span>
-          <span class="row-meta"><span class="go">2022 – 2025</span><span class="disc">Flow cytometry, stem cell markers and assay development. Four research posts, one shared instrument core, one publication.</span></span>
-        </a>
+          <p>Product commercialization, Marketing, Story creation, Product lifecycle management<br>Backlog prioritization, Data visualization, Market research, Road mapping, Cross-functional leadership</p>
+        </div>
+        <div class="skill">
+          <h3>Top skills</h3>
+          <p>Agile and waterfall methodologies, Stakeholder management<br>Portfolio management</p>
+        </div>
+        <div class="skill">
+          <h3>Certifications</h3>
+          <p>Biomedical Research — basic and refresher<br>Product Management Certificate, Mentor</p>
+        </div>
+        <div class="skill">
+          <h3>Languages</h3>
+          <p>Marathi, Hindi, English<br>Native or bilingual proficiency</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <section class="wrap" aria-labelledby="skills-h" style="padding-block:var(--sect)">
-    <div class="grid"><h2 class="a-full rise" id="skills-h">Skills.</h2></div>
-    <div class="grid groups" style="margin-top:clamp(1.5rem,3vw,2.5rem)">
-      <div class="rise"><h3>At the bench</h3><ul>
-          <li>PCR</li>
-          <li>ELISA</li>
-          <li>Flow cytometry</li>
-          <li>Molecular cloning</li>
-          <li>HTS assay development</li>
-          <li>RNA purification</li>
-          <li>Mammalian cell culture</li>
-          <li>Cell line development</li>
-          <li>Western blotting</li>
-      </ul></div>
-      <div class="rise"><h3>Technical</h3><ul>
-          <li>Python</li>
-          <li>R</li>
-          <li>Benchling</li>
-          <li>JIRA</li>
-          <li>Figma</li>
-          <li>Adobe</li>
-          <li>Asana</li>
-          <li>Veeva Clinical Vault</li>
-      </ul></div>
-      <div class="rise"><h3>Product</h3><ul>
-          <li>Product commercialisation</li>
-          <li>Product marketing</li>
-          <li>Data analysis</li>
-          <li>Story creation</li>
-          <li>Product lifecycle management</li>
-          <li>Backlog prioritisation</li>
-          <li>Data visualisation</li>
-          <li>Market research</li>
-          <li>Road mapping</li>
-          <li>Cross-functional leadership</li>
-      </ul></div>
+  <!-- ── Contact ────────────────────────────────────────────── -->
+  <section class="row">
+    <div class="rail"><h2 class="label">Contact</h2></div>
+    <div class="content">
+      <p class="contact-lead">I am looking for a product management role in biotech. Feel free to contact me directly.</p>
+      <ul class="details">
+        <li>San Francisco, CA, USA</li>
+        <li><a href="mailto:vaishanavi04.saware@gmail.com">vaishanavi04.saware@gmail.com</a></li>
+        <li><a class="ext" href="assets/resume.pdf">Resume<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M12.25 5.25V1.75H8.75M12.25 1.75L5.833 8.167M10.5 7.583v3.5a1.167 1.167 0 0 1-1.167 1.167H2.917A1.167 1.167 0 0 1 1.75 11.083V4.667A1.167 1.167 0 0 1 2.917 3.5h3.5" stroke="currentColor" stroke-width="1.167" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      </ul>
+      <span class="pill"><span class="dot" aria-hidden="true"></span>Available for work</span>
     </div>
-  </section>
-
-  <section class="wrap grid meta" id="contact" aria-labelledby="contact-h" style="padding-block:var(--sect)">
-    <div class="a-left">
-      <h2 class="rise" id="contact-h">Get in touch.</h2>
-      <p class="lead rise" style="margin-top:clamp(1.1rem,2.2vw,1.75rem)">I am in San Francisco, in clinical operations at Genentech. Glad to talk about research, product, or anything between the two.</p>
-    </div>
-    <div class="meta-block mb-1 rise"><b>Email</b><a href="mailto:vaishanavi04.saware@gmail.com">vaishanavi04.saware@gmail.com</a></div>
-    <div class="meta-block mb-2 rise"><b>Where</b><span>San Francisco, California</span></div>
-    <div class="meta-block mb-3 rise"><b>Social</b><a href="https://www.linkedin.com/in/vaishanavi-saware">LinkedIn</a></div>
   </section>
 
 </main>
-
-<footer class="foot wrap">
-    <div class="grid"><p class="name a-full rise">Vaishanavi Saware</p></div>
-    <div class="grid foot-line">
-      <span style="grid-column:1 / span 6"><a href="mailto:vaishanavi04.saware@gmail.com">vaishanavi04.saware@gmail.com</a></span>
-      <span class="right small muted" style="grid-column:9 / span 4">San Francisco, California</span>
-    </div>
-  </footer>
 
 <script src="assets/site.js"></script>
 </body>
