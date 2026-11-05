@@ -131,14 +131,16 @@ main {
 .ext { display: inline-flex; align-items: center; gap: 8px; }
 .ext svg { flex: none; }
 
-/* The export from Figma already carries the 48px corners and the hairline border,
-   baked in. Rounding it again in CSS draws a second, smaller curve that shows the
-   page through the gap as soon as the image is scaled — so the PNG's own shape is
-   the only one, and it scales with the image. */
+/* The photo is exported square-cornered and un-bordered, so the curve below is
+   the only one in play. An earlier export had the 48px corners and the hairline
+   baked into the pixels, which left a dark wedge wherever the image was scaled to
+   a size the baked curve no longer matched. */
 .portrait {
   width: 280px;
   height: 350px;
   object-fit: cover;
+  border-radius: 48px;
+  border: 1px solid var(--border);
 }
 
 .intro { display: flex; flex-direction: column; gap: 6px; }
@@ -376,7 +378,7 @@ main {
 @media (max-width: 620px) {
   main { padding: 96px 20px 80px; gap: 72px; }
   .name { font-size: 26px; }
-  .portrait { width: 100%; height: auto; aspect-ratio: 4 / 5; }
+  .portrait { width: 100%; height: auto; aspect-ratio: 4 / 5; border-radius: 32px; }
   .stats { grid-template-columns: 1fr; gap: 12px; }
   .skills { grid-template-columns: 1fr; row-gap: 28px; }
   .project { flex-direction: column; }

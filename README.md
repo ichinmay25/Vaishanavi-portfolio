@@ -11,7 +11,8 @@ content map is in `_private/linkedin-content-for-figma.md`.
 index.html        the whole site: hero, about, projects, experience, education, skills, contact
 assets/site.css   the stylesheet
 assets/site.js    one job — the colour-theme toggle
-assets/*.png      the portrait, three project images, five organisation logos
+assets/portrait.jpg  the hero photo, exported square-cornered — CSS draws the radius
+assets/*.png      three project images, five organisation logos
 assets/resume.pdf the file behind the two Resume links
 ```
 
